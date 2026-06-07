@@ -1,7 +1,7 @@
 app_name = "item_importer"
-app_title = "Item Import"
+app_title = "Item importer"
 app_publisher = "Erpnext"
-app_description = "Add Items details along with Images"
+app_description = "Erpnext item data upload with images"
 app_email = "yuvapriyaa.p@digifyme.tech"
 app_license = "mit"
 
@@ -15,7 +15,7 @@ app_license = "mit"
 # 	{
 # 		"name": "item_importer",
 # 		"logo": "/assets/item_importer/logo.png",
-# 		"title": "Item Import",
+# 		"title": "Item importer",
 # 		"route": "/item_importer",
 # 		"has_permission": "item_importer.api.permission.has_app_permission"
 # 	}

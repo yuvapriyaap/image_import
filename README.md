@@ -1,6 +1,6 @@
-### Item Import
+### Item importer
 
-Add Items details along with Images
+Erpnext item data upload with images
 
 ### Installation
 
