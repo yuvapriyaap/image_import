@@ -20,7 +20,9 @@ app_license = "mit"
 # 		"has_permission": "item_importer.api.permission.has_app_permission"
 # 	}
 # ]
-
+doctype_js = {
+    "Data Import": "public/js/data_import_image.js"
+}
 # Includes in <head>
 # ------------------
 
@@ -246,4 +248,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-
