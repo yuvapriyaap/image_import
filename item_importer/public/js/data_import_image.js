@@ -22,6 +22,7 @@ frappe.ui.form.on("Data Import", {
                 reference_doctype: frm.doc.reference_doctype
             },
             callback: function (r) {
+
                 if (!r.message || !r.message.has_image_field) {
                     hide_image_import_fields(frm);
                     return;
@@ -29,7 +30,30 @@ frappe.ui.form.on("Data Import", {
 
                 show_image_import_fields(frm);
 
-                frm.set_value("custom_matched_field", r.message.matched_field || "");
+                let image_fields = r.message.image_fields || [];
+                let select_options = [];
+
+                image_fields.forEach(function (field) {
+                    select_options.push(field.fieldname);
+                });
+
+                frm.set_df_property(
+                    "custom_matched_field",
+                    "options",
+                    select_options.join("\n")
+                );
+
+                frm.refresh_field("custom_matched_field");
+
+                if (
+                    !frm.doc.custom_matched_field &&
+                    select_options.length
+                ) {
+                    frm.set_value(
+                        "custom_matched_field",
+                        select_options[0]
+                    );
+                }
 
                 if (!frm.doc.custom_image_match_by) {
                     frm.set_value("custom_image_match_by", "name");
@@ -70,7 +94,7 @@ function show_image_import_fields(frm) {
     frm.set_df_property("custom_matched_field", "hidden", 0);
     frm.set_df_property("custom_image_import_log", "hidden", 0);
 
-    frm.set_df_property("custom_matched_field", "read_only", 1);
+    frm.set_df_property("custom_matched_field", "read_only", 0);
 
     frm.set_df_property(
         "custom_image_match_by",
